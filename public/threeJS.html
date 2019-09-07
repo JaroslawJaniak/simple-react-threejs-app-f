@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>IPhone4Gs - React App with three.js</title>
+  </head>
+  <body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/three/three.js"></script>
+	<script src="js/controls/TrackballControls.js"></script>
+	<script src="js/loaders/ColladaLoader.js"></script>
+    <div id="root"></div>
+	
+	<script>
+			//ThreeJS_part		
+			var scene = new THREE.Scene();
+			scene.background = new THREE.Color("#202020");
+			var camera = new THREE.PerspectiveCamera( 75, window.innerWidth/window.innerHeight, 0.05, 500 );
+
+			var renderer = new THREE.WebGLRenderer();
+			var renderer = new THREE.WebGLRenderer({
+				//alpha: true // remove canvas' bg color
+				
+			});
+			renderer.setSize( window.innerWidth, window.innerHeight );
+			
+			document.body.appendChild( renderer.domElement );
+			
+			// load a texture, set wrap mode to repeat
+			var texture = new THREE.TextureLoader().load( "textures/ultra_hd_abstract_C.jpg" );
+			texture.wrapS = THREE.RepeatWrapping;
+			texture.wrapT = THREE.RepeatWrapping;
+			texture.repeat.set( 1, 1 );
+			
+			// Trackball Controller
+			var controls = new THREE.TrackballControls( camera );
+			controls.rotateSpeed = 3.0;
+			controls.zoomSpeed = 2.0;
+			controls.panSpeed = 0.5;
+			controls.noZoom = false;
+			controls.noPan = true;
+			controls.staticMoving = false;
+			controls.dynamicDampingFactor = 0.2;
+			
+			// Lighting
+			var iphone_color  = '#FAFAFA',
+			ambientLight  = new THREE.AmbientLight( '#EEEEEE' ),
+			hemiLight     = new THREE.HemisphereLight( iphone_color, iphone_color, 0 ),
+			light         = new THREE.PointLight( iphone_color, 1, 100 );
+
+			hemiLight.position.set( 0, 50, 0 );
+			light.position.set( 0, 20, 10 );
+
+			scene.add( ambientLight );
+			scene.add( hemiLight );
+			scene.add( light )
+
+			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			var material = new THREE.MeshBasicMaterial( { map: texture } );
+			material.side = THREE.DoubleSide;
+			
+			var cube = new THREE.Mesh( geometry, material );
+			var cube2 = new THREE.Mesh( geometry, material );
+			cube.position.set(-1, 0, -1);
+			cube2.position.set(1, 0, 1);
+			
+			//scene.add( cube );
+			//scene.add( cube2 );
+			
+			//Object Loader
+			loader = new THREE.ColladaLoader();
+			
+			/*
+			loader.load( 'https://s3-us-west-2.amazonaws.com/s.cdpn.io/392/iphone6.dae', function ( collada ) {
+					var dae = collada.scene;
+					dae.position.set(1.2, 0, 0.8);
+					scene.add(dae);
+
+				});
+			*/
+			
+			var dae;
+				
+			loader.load( "IPhone4Gs_5.dae", function ( collada ) {
+					dae = collada.scene;
+					//dae.position.set(0.8, -1.5, 0.6);
+					dae.scale.set(1,1,1);
+					scene.add(dae);
+				});
+			
+			
+			var axisHelper = new THREE.AxisHelper( 1.25 );
+			scene.add( axisHelper );
+
+			camera.position.z = 8;
+
+			var animate = function () {
+				requestAnimationFrame( animate );
+
+				cube.rotation.x += 0.01;
+				cube.rotation.y += 0.01;
+				//dae.rotation.x += 0.005;
+				//dae.rotation.y += 0.005;
+				dae.rotation.z += 0.005;
+				
+				cube2.rotation.x -= 0.01;
+				cube2.rotation.y += 0.01;
+				
+				
+				
+				controls.update();
+
+				renderer.render( scene, camera );
+			};
+
+			animate();
+	</script>
+  </body>
+</html>

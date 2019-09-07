@@ -1,26 +1,75 @@
+/* 
+React-App-ThreeJSv1
+Jarosław_Janiak_WFIS_2019
+*/
+
 .App {
   text-align: center;
+}
+
+div.App {
+	border: 2px solid white;
+	
+}
+
+div.cont-logo {
+	width:40vmin;
+	height: 40vmin;
+	border: 5px solid black;
+	position: relative;
+	
+}
+
+img.App-logo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+img.App-inner-logo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
+  
+  z-index: 1;
+}
+
+.App-inner-logo {
+  animation: App-inner-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+  
+  z-index: 1;
+  
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  background-color: #fff;
+  min-height: 50vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-size: calc(4px + 2vmin);
+  color: black;
+  
 }
 
 .App-link {
   color: #61dafb;
+}
+
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	
 }
 
 @keyframes App-logo-spin {
@@ -31,3 +80,153 @@
     transform: rotate(360deg);
   }
 }
+
+@keyframes App-inner-logo-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+#hide, #show {
+	display: inline
+}
+
+.main {
+	margin-top: 10px;
+	margin:10px auto 10px auto;
+	border: 1px solid white;
+}
+
+#page {
+	width: 90vmin;
+	height: 30vmin;
+	padding:0px 25px 20px 25px;
+	margin:0px auto 10px auto;
+	border: 3px solid white;
+	background-color: #202020;
+	background-repeat: no-repeat;
+	background-position: center top;
+	box-shadow:  -10px 16px 20px 0 black;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+#iphone-expended-image-cont{
+	width: 70vmin;
+	height: 38vmin;
+	padding:0px 25px 20px 25px;
+	margin:10px auto 10px auto;
+	border: 3px solid white;
+	background-color: #202020;
+	background-repeat: no-repeat;
+	background-position: center top;
+	box-shadow:  -10px 16px 20px 0 black;
+}
+
+@keyframes color-animation {
+	0% { text-shadow:0px 0px 20px black; }
+	50%{ text-shadow:0px 0px 20px white; }
+	100% { text-shadow:0px 0px 20px black; }
+}
+
+.ColorAnimation {
+    height: 100px;
+    animation: color-animation 5s infinite;
+}
+
+#nav_2 {
+	width: 70vmin;
+	padding: 15px;
+	margin: 40px auto 0px auto;
+	border-top: 2px solid #fff;
+	border-bottom: 1px solid #fff;
+	
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+p {
+	text-align: center;
+	width: 600px;
+	margin: 0px auto 0px auto;
+}
+
+.foot {
+	color: black;
+	font-family:impact;
+	font-size:90%;
+	height: 40px;
+	margin: 20px auto 0px auto;
+}
+
+p#vow{
+	color:#fff;
+	margin-top:50px;
+	margin-bottom:50px;
+	font-family:times;
+	font-size:90%;
+	letter-spacing:0.15em;
+	text-align:justify;
+	text-shadow:0px 0px 20px black;
+	}
+
+p#title {
+	color:#fff;
+	font-family:impact;
+}
+
+.clear {clear:both;}
+				
+.iphone-image:hover {
+	opacity: 1;
+	filter: blur(0px);
+	transition: opacity 0.5s;
+	cursor: pointer; 
+}
+				
+.iphone-image {
+	position: relative;
+	width:14vmin;
+	height: 14vmin;
+	opacity: 0.5;
+	margin: 10px;
+	background-color: white;
+}
+
+#iphone-expended-image{
+	width:38vmin;
+	height: 38vmin;
+	margin: 10px;
+}
+
+#iphone-expended-image-cont{
+	margin-top:40px;
+	margin-bottom:40px;
+}
+
+#iphone-images{
+	width:80vmin;
+	height: 20vmin;
+	margin: 20px auto 0px auto;
+}
+
+#react-info{
+	width:30vmin;
+	
+	
+}
+
+#react-info:hover{
+	cursor: pointer;
+	font-weight: bold;
+}
+
+
+
