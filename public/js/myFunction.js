@@ -1,52 +1,7 @@
-const myFunction = () => {
-	
-//jQeury_part
-		$(document).ready(function(){
-		
-		let isRotate = true;
-		if(isRotate == true){$("#intro").css("color", "orange");}
-			
-		  $("#hide").click(function(){
-			$("img").css("visibility", "hidden");
-			$("img").css("animation-play-state", "paused");
-			isRotate = false;
-			if(isRotate == false){$("#intro").css("color", "red");}
-		  });
-		  
-		  $("#show").click(function(){
-			$("img").css("visibility", "visible");
-			$("img").css("animation-play-state", "running");
-			isRotate = true;
-			if(isRotate == true){$("#intro").css("color", "green");}
-		  });
-		  
-		  
-		  $("#start").click(function(){
-			$("img").css("animation-play-state", "running");
-			isRotate = true;
-			if(isRotate == true){$("#intro").css("color", "green");}
-		  });
-		  $("#stop").click(function(){
-			$("img").css("animation-play-state", "paused");
-			isRotate = false;
-			if(isRotate == false){$("#intro").css("color", "red");}
-		  });
-		  
-		  
-		  
-		  $(".cont-logo").click(function(){
-			$("img").css("animation-play-state", "paused");
-			isRotate = false;
-		  });
-		  
-		  
-		  $(".cont-logo").dblclick(function(){
-			$("img").css("animation-play-state", "running");
-			isRotate = true;
-		  });
-		  		
-		});
+//React-App-ThreeJSv1
+//Jarosław_Janiak_WFIS_2019
 
+const myFunction = () => {
 	
 //ThreeJS_part
 			var scene = new THREE.Scene();
@@ -70,10 +25,12 @@ const myFunction = () => {
 			});
 			
 			function open3D_model(){
+				renderer.domElement.style.transition = "display 2s";
 				renderer.domElement.style.display = "block";
 				document.getElementById("react-info").innerHTML = "Click here to hide 3D iPhone model";
 				document.getElementById("App-header").style.opacity="0.7";
-				document.getElementById("App-header").style.filter= "blur(8px)";
+				document.getElementById("App-header").style.filter= "blur(10px)";
+				renderer.domElement.style.opacity="1";
 				isShown = true;
 				console.log("display: " + renderer.domElement.style.display);
 				console.log(renderer.domElement.style.display == "block");
@@ -149,18 +106,6 @@ const myFunction = () => {
 			scene.add( ambientLight );
 			scene.add( hemiLight );
 			scene.add( light )
-
-			var geometry = new THREE.BoxGeometry( 1, 1, 1 );
-			var material = new THREE.MeshBasicMaterial( { map: texture } );
-			material.side = THREE.DoubleSide;
-			
-			var cube = new THREE.Mesh( geometry, material );
-			var cube2 = new THREE.Mesh( geometry, material );
-			cube.position.set(-1, 0, -1);
-			cube2.position.set(1, 0, 1);
-			
-			//scene.add( cube );
-			//scene.add( cube2 );
 			
 			//Object Loader
 			loader = new THREE.ColladaLoader();
@@ -183,14 +128,9 @@ const myFunction = () => {
 			var animate = function () {
 				requestAnimationFrame( animate );
 
-				cube.rotation.x += 0.01;
-				cube.rotation.y += 0.01;
 				//dae.rotation.x += 0.005;
 				//dae.rotation.z += 0.005;
 				//axisHelper.rotation.z += 0.005;
-				
-				cube2.rotation.x -= 0.01;
-				cube2.rotation.y += 0.01;
 				
 				controls.update();
 

@@ -1,3 +1,6 @@
+//React-App-ThreeJSv1
+//Jarosław_Janiak_WFIS_2019
+
 import React from 'react';
 import img1 from './img1.jpg';
 import img2 from './img2.jpg';
@@ -45,6 +48,5 @@ function App() {
 </div>
   );
 }
-
 
 export default App;
